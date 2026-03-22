@@ -1,26 +1,244 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f7f1ea;
+  --foreground: #17211b;
+  --card: rgba(255, 250, 246, 0.88);
+  --muted: #5f665f;
+  --line: rgba(23, 33, 27, 0.1);
+  --brand-soft: #d7e6db;
+  --header-accent: #76b26d;
+  --header-accent-soft: #dcefd7;
+  --accent-soft: #f0d6c4;
+  --gold-soft: #f1e5cb;
+  --color-ink: #17211b;
+  --color-forest: #194634;
+  --color-clay: #bf5c2b;
+  --color-gold: #9f8451;
+  --color-cyan: #2aa7a0;
+  --color-cyan-deep: #157f7f;
+  --color-cyan-soft: #d8f3f0;
+  --shadow-soft: 0 24px 80px rgba(25, 70, 52, 0.08);
+  --shadow-deep: 0 30px 120px rgba(23, 33, 27, 0.14);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-sans: var(--font-body);
+  --font-heading: var(--font-heading);
 }
 
 body {
-  background: var(--background);
+  background-color: #fdf7f2;
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family:
+    var(--font-body),
+    "PingFang SC",
+    "Hiragino Sans GB",
+    "Microsoft YaHei",
+    sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+.site-grid {
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: visible;
+}
+
+.site-grid::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-color: #fdf7f2;
+  background-image:
+    radial-gradient(circle at 50% 14%, rgba(247, 219, 201, 0.88), transparent 28%),
+    radial-gradient(circle at 8% 26%, rgba(248, 223, 208, 0.5), transparent 24%),
+    radial-gradient(circle at 92% 28%, rgba(248, 223, 208, 0.52), transparent 24%),
+    radial-gradient(circle at 78% 18%, rgba(250, 228, 214, 0.5), transparent 20%),
+    radial-gradient(circle at 16% 10%, rgba(255, 255, 255, 0.72), transparent 18%),
+    radial-gradient(circle at 22% 74%, rgba(255, 255, 255, 0.18), transparent 20%),
+    linear-gradient(118deg, transparent 0%, transparent 44%, rgba(159, 132, 81, 0.02) 44.2%, transparent 44.5%, transparent 100%),
+    radial-gradient(rgba(191, 92, 43, 0.009) 0.7px, transparent 0.7px);
+  background-size: auto, auto, auto, auto, auto, auto, auto, 20px 20px;
+  background-position: center, center, center, center, center, center, center, 0 0;
+}
+
+.site-grid > * {
+  position: relative;
+  z-index: 1;
+}
+
+.container-shell {
+  margin-inline: auto;
+  width: min(1180px, calc(100% - 32px));
+}
+
+.glass-card {
+  background: var(--card);
+  backdrop-filter: blur(18px);
+  box-shadow: var(--shadow-soft);
+}
+
+.hero-mesh {
+  background:
+    radial-gradient(circle at 15% 20%, rgba(215, 230, 219, 1), transparent 28%),
+    radial-gradient(circle at 88% 8%, rgba(241, 229, 203, 0.88), transparent 24%),
+    linear-gradient(135deg, rgba(25, 70, 52, 0.12), rgba(255, 255, 255, 0));
+}
+
+.pattern-dots {
+  background-image: radial-gradient(rgba(25, 70, 52, 0.18) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.display-title {
+  font-family:
+    var(--font-heading),
+    "Source Han Serif SC",
+    "STSong",
+    serif;
+  letter-spacing: -0.03em;
+}
+
+.display-kicker {
+  font-family:
+    var(--font-heading),
+    "Source Han Serif SC",
+    serif;
+  letter-spacing: -0.02em;
+}
+
+.logo-wordmark {
+  font-family:
+    var(--font-body),
+    "Avenir Next",
+    "Segoe UI",
+    sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.055em;
+  background: linear-gradient(90deg, #9d9640 0%, #b88f42 34%, #8ca03b 66%, #b68b3f 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.accent-line {
+  position: relative;
+}
+
+.accent-line::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  width: 84px;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--color-clay), rgba(191, 92, 43, 0.3));
+}
+
+.pill {
+  background: rgba(255, 252, 246, 0.72);
+  backdrop-filter: blur(10px);
+}
+
+.section-surface {
+  position: relative;
+}
+
+.section-surface::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 32px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.48), rgba(255, 255, 255, 0.08)),
+    linear-gradient(120deg, rgba(25, 70, 52, 0.06), transparent 35%);
+  pointer-events: none;
+}
+
+.editorial-frame {
+  position: relative;
+  overflow: hidden;
+  border-radius: 32px;
+  box-shadow: var(--shadow-deep);
+}
+
+.editorial-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(18, 24, 21, 0.02), rgba(18, 24, 21, 0.55)),
+    radial-gradient(circle at top right, rgba(255, 255, 255, 0.24), transparent 28%);
+}
+
+.media-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.eyebrow {
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  color: var(--color-clay);
+}
+
+.catalog-grid {
+  display: grid;
+  gap: 1.25rem;
+}
+
+@media (min-width: 1024px) {
+  .catalog-grid {
+    grid-template-columns: 1.15fr 0.85fr;
+  }
+}
+
+.page-section {
+  padding-block: 48px;
+}
+
+.section-panel {
+  background: linear-gradient(180deg, rgba(255, 252, 247, 0.86), rgba(255, 250, 244, 0.72));
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(18px);
+}
+
+.soft-rule {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(90deg, rgba(191, 92, 43, 0), rgba(191, 92, 43, 0.45), rgba(25, 70, 52, 0));
+}
+
+.floating-chip {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(14px);
+}
+
+@media (min-width: 768px) {
+  .page-section {
+    padding-block: 64px;
+  }
 }
